@@ -1,0 +1,6 @@
+{
+  "name": "3D Particle Hand Visualizer",
+  "description": "An interactive 3D particle visualizer driven by real-time hand-tracking using MediaPipe Hands and Three.js.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
