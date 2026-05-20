@@ -71,7 +71,7 @@ export default function App() {
 
     // Initialize Hands object
     const hands = new (window as any).Hands({
-      locateFile: (file: string) => `/mediapipe/${file}`,
+      locateFile: (file: string) => `${import.meta.env.BASE_URL}mediapipe/${file}`,
     });
 
     hands.setOptions({
