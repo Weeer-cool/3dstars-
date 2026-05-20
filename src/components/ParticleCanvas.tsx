@@ -168,11 +168,11 @@ export const ParticleCanvas = forwardRef<ParticleCanvasRef, ParticleCanvasProps>
       if (ctx) {
         const half = size / 2;
         const gradient = ctx.createRadialGradient(half, half, 0, half, half, half);
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.98)');
-        gradient.addColorStop(0.08, 'rgba(255, 255, 255, 0.92)');
-        gradient.addColorStop(0.18, 'rgba(240, 245, 255, 0.72)');
-        gradient.addColorStop(0.35, 'rgba(180, 210, 255, 0.38)');
-        gradient.addColorStop(0.6, 'rgba(80, 140, 255, 0.12)');
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+        gradient.addColorStop(0.06, 'rgba(255, 255, 255, 0.95)');
+        gradient.addColorStop(0.15, 'rgba(255, 255, 255, 0.7)');
+        gradient.addColorStop(0.3, 'rgba(200, 220, 255, 0.25)');
+        gradient.addColorStop(0.55, 'rgba(0, 0, 0, 0)');
         gradient.addColorStop(1.0, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, size, size);
@@ -407,7 +407,7 @@ export const ParticleCanvas = forwardRef<ParticleCanvasRef, ParticleCanvasProps>
         map: glowTexture,
         vertexColors: true,
         transparent: true,
-        opacity: Math.max(0.05, Math.min(1.0, settingsRef.current.glowIntensity * 0.35)),
+        opacity: Math.max(0.05, Math.min(1.0, settingsRef.current.glowIntensity * 0.25)),
         blending: THREE.AdditiveBlending,
         depthWrite: false,
         sizeAttenuation: true,
@@ -526,7 +526,7 @@ export const ParticleCanvas = forwardRef<ParticleCanvasRef, ParticleCanvasProps>
       // Update particle material size and glow opacity
       if (points.material instanceof THREE.PointsMaterial) {
         points.material.size = size * 0.6;
-        points.material.opacity = Math.max(0.05, Math.min(1.0, settingsRef.current.glowIntensity * 0.35));
+        points.material.opacity = Math.max(0.05, Math.min(1.0, settingsRef.current.glowIntensity * 0.25));
         points.material.needsUpdate = true;
       }
 
@@ -594,7 +594,7 @@ export const ParticleCanvas = forwardRef<ParticleCanvasRef, ParticleCanvasProps>
         powerPreference: 'high-performance',
       });
       renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 3));
+      renderer.setPixelRatio(window.devicePixelRatio);
       
       // Force block, absolute styling on canvas element to ensure correct layout sizing
       renderer.domElement.style.position = 'absolute';
