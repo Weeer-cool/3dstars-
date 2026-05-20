@@ -160,19 +160,22 @@ export const ParticleCanvas = forwardRef<ParticleCanvasRef, ParticleCanvasProps>
 
     // Create custom particle glow texture via canvas context (extremely lightweight & avoids cross-origin loader issues)
     const createParticleTexture = (): THREE.Texture => {
+      const size = 256;
       const canvas = document.createElement('canvas');
-      canvas.width = 64;
-      canvas.height = 64;
+      canvas.width = size;
+      canvas.height = size;
       const ctx = canvas.getContext('2d');
       if (ctx) {
-        const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-        gradient.addColorStop(0.12, 'rgba(255, 255, 255, 0.85)');
-        gradient.addColorStop(0.28, 'rgba(235, 242, 255, 0.55)');
-        gradient.addColorStop(0.6, 'rgba(120, 180, 255, 0.18)');
+        const half = size / 2;
+        const gradient = ctx.createRadialGradient(half, half, 0, half, half, half);
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.98)');
+        gradient.addColorStop(0.08, 'rgba(255, 255, 255, 0.92)');
+        gradient.addColorStop(0.18, 'rgba(240, 245, 255, 0.72)');
+        gradient.addColorStop(0.35, 'rgba(180, 210, 255, 0.38)');
+        gradient.addColorStop(0.6, 'rgba(80, 140, 255, 0.12)');
         gradient.addColorStop(1.0, 'rgba(0, 0, 0, 0)');
         ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 64, 64);
+        ctx.fillRect(0, 0, size, size);
       }
       const texture = new THREE.CanvasTexture(canvas);
       texture.colorSpace = THREE.SRGBColorSpace;
@@ -420,7 +423,7 @@ export const ParticleCanvas = forwardRef<ParticleCanvasRef, ParticleCanvasProps>
       mainGroupRef.current = mainGroup;
 
       // 2. CREATE RANDOM BACKGROUND STATIC STARFIELD (Increasing deep space parallax depth)
-      const starCount = 3500;
+      const starCount = 8000;
       const starGeometry = new THREE.BufferGeometry();
       const starPos = new Float32Array(starCount * 3);
       const starColors = new Float32Array(starCount * 3);
@@ -591,7 +594,7 @@ export const ParticleCanvas = forwardRef<ParticleCanvasRef, ParticleCanvasProps>
         powerPreference: 'high-performance',
       });
       renderer.setSize(width, height);
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 3));
       
       // Force block, absolute styling on canvas element to ensure correct layout sizing
       renderer.domElement.style.position = 'absolute';

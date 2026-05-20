@@ -132,7 +132,7 @@ export function ControlPanel({
             <input
               type="range"
               min="5000"
-              max="45000"
+              max="80000"
               step="1000"
               value={settings.density}
               onChange={(e) => updateSetting('density', parseInt(e.target.value))}
@@ -140,7 +140,7 @@ export function ControlPanel({
             />
             <div className="flex justify-between text-[9px] font-mono text-slate-500 mt-1">
               <span>5,000 (超流畅)</span>
-              <span>45,000 (极斑斓)</span>
+              <span>80,000 (极斑斓)</span>
             </div>
           </div>
 
@@ -155,7 +155,7 @@ export function ControlPanel({
             <input
               type="range"
               min="0.4"
-              max="3.0"
+              max="4.0"
               step="0.1"
               value={settings.size}
               onChange={(e) => updateSetting('size', parseFloat(e.target.value))}
@@ -174,7 +174,7 @@ export function ControlPanel({
             <input
               type="range"
               min="0.1"
-              max="3.0"
+              max="4.0"
               step="0.1"
               value={settings.glowIntensity}
               onChange={(e) => updateSetting('glowIntensity', parseFloat(e.target.value))}

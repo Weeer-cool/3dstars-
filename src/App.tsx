@@ -15,9 +15,9 @@ import { Sparkles, Maximize, Minimize, Tv, Zap, Info, Camera, Hand } from 'lucid
 const INITIAL_SETTINGS: SystemSettings = {
   preset: 'nebula',
   baseColor: '#3b82f6',
-  density: 15000,
-  size: 1.8,
-  glowIntensity: 1.2,
+  density: 30000,
+  size: 2.0,
+  glowIntensity: 1.5,
   autoRotateSpeed: 0.8,
   interactionSensitivity: 1.2,
   webcamSize: 'md',
@@ -190,8 +190,8 @@ export default function App() {
             }
           }
         },
-        width: 640,
-        height: 480,
+        width: 1280,
+        height: 720,
       });
 
       camera.start()
